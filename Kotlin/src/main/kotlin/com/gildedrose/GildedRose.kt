@@ -20,20 +20,18 @@ class GildedRose(var items: List<Item>) {
     }
 
     fun agedBrieUpdate(item: Item) {
-        if (item.quality < 50)
-            item.quality += 1
+        item.quality = increaseQuality(item.quality)
         item.sellIn -= 1
-        if (item.sellIn < 0 && item.quality < 50)
-            item.quality += 1
+        if (item.sellIn < 0)
+            item.quality = increaseQuality(item.quality)
     }
 
     fun backstageUpdate(item: Item) {
-        if (item.quality < 50)
-            item.quality += 1
-        if (item.sellIn < 11 && item.quality < 50)
-            item.quality += 1
-        if (item.sellIn < 6 && item.quality < 50)
-            item.quality = item.quality + 1
+        item.quality = increaseQuality(item.quality)
+        if (item.sellIn < 11)
+            item.quality = increaseQuality(item.quality)
+        if (item.sellIn < 6)
+            item.quality = increaseQuality(item.quality)
         item.sellIn -= 1
         if (item.sellIn < 0)
             item.quality = 0
@@ -42,10 +40,21 @@ class GildedRose(var items: List<Item>) {
     fun sulfurasUpdate(item: Item) {}
 
     fun standardUpdate(item: Item) {
-        if (item.quality > 0)
-            item.quality -= 1
+        item.quality = decreaseQuality(item.quality)
         item.sellIn -= 1
-        if (item.sellIn < 0 && item.quality > 0)
-            item.quality -= 1
+        if (item.sellIn < 0)
+            item.quality = decreaseQuality(item.quality)
     }
+
+    fun increaseQuality(quality: Int) =
+        if (quality < 50)
+            quality + 1
+        else
+            quality
+
+    fun decreaseQuality(quality: Int) =
+        if (quality > 0)
+            quality - 1
+        else
+            quality
 }
