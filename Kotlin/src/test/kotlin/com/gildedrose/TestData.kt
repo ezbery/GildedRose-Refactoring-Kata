@@ -4,6 +4,7 @@ import java.io.File
 
 object TestData {
     val expectedOutput = File("../texttests/ThirtyDays/stdout.gr").readText()
+    val days1000Output = File("src/test/kotlin/com/gildedrose/1000daysout.gr").readText()
 
     val items = listOf(
         Item("+5 Dexterity Vest", 10, 20), //

@@ -24,6 +24,7 @@ internal class GildedRoseTest {
     @Test
     fun diff() {
         //given
+        val excepted = TestData.expectedOutput
         val app = GildedRose(TestData.items)
         val actual = mutableListOf(Constants.HEADER)
         //when
@@ -32,6 +33,21 @@ internal class GildedRoseTest {
             app.update()
         }
         //then
-        assertEquals(TestData.expectedOutput, actual.allDaysToString())
+        assertEquals(excepted, actual.allDaysToString())
+    }
+
+    @Test
+    fun `diff 1000 days`() {
+        //given
+        val excepted = TestData.days1000Output
+        val app = GildedRose(TestData.items)
+        val actual = mutableListOf(Constants.HEADER)
+        //when
+        for (i in 0..1000) {
+            actual.add(dayToString(i, app.items))
+            app.update()
+        }
+        //then
+        assertEquals(excepted, actual.allDaysToString())
     }
 }
