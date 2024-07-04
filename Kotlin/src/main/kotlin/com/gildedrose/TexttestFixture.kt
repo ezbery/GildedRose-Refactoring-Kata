@@ -24,11 +24,12 @@ fun main(args: Array<String>) {
         else Constants.DEFAULT_DAYS
 
 
-    val output = (0..<days).map { day ->
-        dayToString(day, items).also {
-            app.update()
+    val output = (0..<days)
+        .map { day ->
+            dayToString(day, items).also {
+                app.update()
+            }
         }
-    }
 
     println(output.allDaysToString())
 }
