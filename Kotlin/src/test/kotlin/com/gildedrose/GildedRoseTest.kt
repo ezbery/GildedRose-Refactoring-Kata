@@ -14,7 +14,7 @@ internal class GildedRoseTest {
         assertEquals(items[0].sellIn, app.items[0].sellIn, "before: ${app.items[0]}")
         assertEquals(items[0].quality, app.items[0].quality, "before: ${app.items[0]}")
         //when
-        app.updateQuality()
+        app.update()
         //then
         assertEquals(items[0].name, app.items[0].name, "after: ${app.items[0]}")
         assertEquals(items[0].sellIn, app.items[0].sellIn, "after: ${app.items[0]}") //TODO -1
@@ -29,7 +29,7 @@ internal class GildedRoseTest {
         //when
         for (i in 0..<Constants.DEFAULT_DAYS) {
             actual.add(dayToString(i, app.items))
-            app.updateQuality()
+            app.update()
         }
         //then
         assertEquals(TestData.expectedOutput, actual.allDaysToString())
