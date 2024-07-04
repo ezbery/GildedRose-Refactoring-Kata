@@ -2,7 +2,7 @@ package com.gildedrose
 
 fun main(args: Array<String>) {
 
-    println("OMGHAI!")
+    println(Constants.HEADER)
 
     val items = listOf(
         Item("+5 Dexterity Vest", 10, 20), //
@@ -21,7 +21,7 @@ fun main(args: Array<String>) {
 
     val days =
         if (args.isNotEmpty()) Integer.parseInt(args[0]) + 1
-        else 31
+        else Constants.DEFAULT_DAYS
 
 
     val output = (0..<days).map { day ->
@@ -30,7 +30,7 @@ fun main(args: Array<String>) {
         }
     }
 
-    println(output.joinToString("\n\n"))
+    println(output.allDaysToString())
 }
 
 fun daySummary(day: Int, items: List<Item>) =
@@ -38,6 +38,8 @@ fun daySummary(day: Int, items: List<Item>) =
         "-------- day $day --------",
         "name, sellIn, quality",
         items.joinToString("\n") { it.toString() },
+        ""
     )
 
 fun dayToString(day: Int, items: List<Item>) = daySummary(day, items).joinToString("\n")
+fun List<String>.allDaysToString() = this.joinToString("\n") + "\n"
