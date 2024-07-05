@@ -50,4 +50,47 @@ internal class GildedRoseTest {
         //then
         assertEquals(excepted, actual.allDaysToString())
     }
+
+    @Test
+    fun `decrease quality tests`() {
+        //given
+        val input = mapOf(
+            -5 to -5,
+            -3 to -3,
+            -1 to -1,
+            0 to 0,
+            1 to 0,
+            2 to 1,
+            3 to 2,
+        )
+        input.forEach {
+            //when
+            val item = Item("", 0, it.key)
+            item.decreaseQuality()
+            //then
+            assertEquals(it.value, item.quality)
+        }
+    }
+
+    @Test
+    fun `increase quality tests`() {
+        //given
+        val input = mapOf(
+            -50 to -49,
+            -1 to 0,
+            0 to 1,
+            30 to 31,
+            49 to 50,
+            50 to 50,
+            51 to 51,
+            70 to 70,
+        )
+        input.forEach {
+            //when
+            val item = Item("", 0, it.key)
+            item.increaseQuality()
+            //then
+            assertEquals(it.value, item.quality)
+        }
+    }
 }
