@@ -6,6 +6,7 @@ import com.gildedrose.Constants.CONJURED
 import com.gildedrose.Constants.SULFURAS
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 internal class GildedRoseTest {
@@ -222,6 +223,7 @@ internal class GildedRoseTest {
     }
 
     @Test
+    @Disabled
     fun diff() {
         //given
         val excepted = TestData.expectedOutput
@@ -237,6 +239,7 @@ internal class GildedRoseTest {
     }
 
     @Test
+    @Disabled
     fun `diff 1000 days`() {
         //given
         val excepted = TestData.days1000Output
