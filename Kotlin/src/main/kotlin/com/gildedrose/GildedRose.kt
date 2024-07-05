@@ -11,7 +11,7 @@ class GildedRose(var items: List<Item>) {
         items.map { updateItem(it) }
     }
 
-    fun updateItem(item: Item) {
+    private fun updateItem(item: Item) {
         when {
             item.name.contains(AGED_BRIE) -> agedBrieUpdate(item)
             item.name.contains(BACKSTAGE_PASSES) -> backstageUpdate(item)
@@ -21,13 +21,13 @@ class GildedRose(var items: List<Item>) {
         }
     }
 
-    fun agedBrieUpdate(item: Item) {
+    private fun agedBrieUpdate(item: Item) {
         item.increaseQuality()
         item.sellIn -= 1
         item.increaseQualityIfSellInLowerThan(0)
     }
 
-    fun backstageUpdate(item: Item) {
+    private fun backstageUpdate(item: Item) {
         item.increaseQuality()
         item.increaseQualityIfSellInLowerThan(11)
         item.increaseQualityIfSellInLowerThan(6)
@@ -35,9 +35,9 @@ class GildedRose(var items: List<Item>) {
         item.decreaseQualityIfSellInLowerThan(0, item.quality)
     }
 
-    fun sulfurasUpdate(item: Item) {}
+    private fun sulfurasUpdate(item: Item) {}
 
-    fun conjuredUpdate(item: Item) {
+    private fun conjuredUpdate(item: Item) {
         item.decreaseQuality()
         item.decreaseQuality()
         item.sellIn -= 1
@@ -45,7 +45,7 @@ class GildedRose(var items: List<Item>) {
         item.decreaseQualityIfSellInLowerThan(0)
     }
 
-    fun standardUpdate(item: Item) {
+    private fun standardUpdate(item: Item) {
         item.decreaseQuality()
         item.sellIn -= 1
         item.decreaseQualityIfSellInLowerThan(0)
