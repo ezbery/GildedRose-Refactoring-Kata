@@ -2,6 +2,7 @@ package com.gildedrose
 
 import com.gildedrose.Constants.AGED_BRIE
 import com.gildedrose.Constants.BACKSTAGE_PASSES
+import com.gildedrose.Constants.CONJURED
 import com.gildedrose.Constants.SULFURAS
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -180,6 +181,44 @@ internal class GildedRoseTest {
         assertEquals(item.name, app.items.first().name, "after: ${app.items.first()}")
         assertEquals(inputSellIn - 1, app.items.first().sellIn, "after: ${app.items.first()}")
         assertEquals(inputQuality + 2, app.items.first().quality, "after: ${app.items.first()}")
+    }
+
+    @Test
+    fun `conjured update test`() {
+        //given
+        val inputSellIn = 5
+        val inputQuality = 5
+        val item = Item(CONJURED, inputSellIn, inputQuality)
+        val app = GildedRose(listOf(item))
+
+        assertEquals(item.name, app.items.first().name, "before: ${app.items.first()}")
+        assertEquals(inputSellIn, app.items.first().sellIn, "before: ${app.items.first()}")
+        assertEquals(inputQuality, app.items.first().quality, "before: ${app.items.first()}")
+        //when
+        app.updateQuality()
+        //then
+        assertEquals(item.name, app.items.first().name, "after: ${app.items.first()}")
+        assertEquals(inputSellIn - 1, app.items.first().sellIn, "after: ${app.items.first()}")
+        assertEquals(inputQuality - 2, app.items.first().quality, "after: ${app.items.first()}")
+    }
+
+    @Test
+    fun `conjured update test when sellIn lower than 0`() {
+        //given
+        val inputSellIn = 0
+        val inputQuality = 5
+        val item = Item(CONJURED, inputSellIn, inputQuality)
+        val app = GildedRose(listOf(item))
+
+        assertEquals(item.name, app.items.first().name, "before: ${app.items.first()}")
+        assertEquals(inputSellIn, app.items.first().sellIn, "before: ${app.items.first()}")
+        assertEquals(inputQuality, app.items.first().quality, "before: ${app.items.first()}")
+        //when
+        app.updateQuality()
+        //then
+        assertEquals(item.name, app.items.first().name, "after: ${app.items.first()}")
+        assertEquals(inputSellIn - 1, app.items.first().sellIn, "after: ${app.items.first()}")
+        assertEquals(inputQuality - 4, app.items.first().quality, "after: ${app.items.first()}")
     }
 
     @Test

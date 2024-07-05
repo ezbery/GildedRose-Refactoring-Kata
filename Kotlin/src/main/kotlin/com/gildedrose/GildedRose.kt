@@ -41,7 +41,8 @@ class GildedRose(var items: List<Item>) {
         item.decreaseQuality()
         item.decreaseQuality()
         item.sellIn -= 1
-        item.decreaseQualityIfSellInLowerThan(0, 2)
+        item.decreaseQualityIfSellInLowerThan(0)
+        item.decreaseQualityIfSellInLowerThan(0)
     }
 
     fun standardUpdate(item: Item) {
