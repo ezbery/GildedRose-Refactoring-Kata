@@ -25,7 +25,7 @@ internal class GildedRoseTest {
     fun diff() {
         //given
         val excepted = TestData.expectedOutput
-        val app = GildedRose(TestData.items)
+        val app = GildedRose(TestData.items())
         val actual = mutableListOf(Constants.HEADER)
         //when
         for (i in 0..<Constants.DEFAULT_DAYS) {
@@ -40,7 +40,7 @@ internal class GildedRoseTest {
     fun `diff 1000 days`() {
         //given
         val excepted = TestData.days1000Output
-        val app = GildedRose(TestData.items)
+        val app = GildedRose(TestData.items())
         val actual = mutableListOf(Constants.HEADER)
         //when
         for (i in 0..1000) {
