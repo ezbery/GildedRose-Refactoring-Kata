@@ -27,7 +27,7 @@ fun main(args: Array<String>) {
     val output = (0..<days)
         .map { day ->
             dayToString(day, items).also {
-                app.update()
+                app.updateQuality()
             }
         }
 

@@ -7,7 +7,7 @@ import com.gildedrose.Constants.SULFURAS
 
 class GildedRose(var items: List<Item>) {
 
-    fun update() {
+    fun updateQuality() {
         items.map { updateItem(it) }
     }
 

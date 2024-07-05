@@ -30,7 +30,7 @@ internal class GildedRoseTest {
         //when
         for (i in 0..<Constants.DEFAULT_DAYS) {
             actual.add(dayToString(i, app.items))
-            app.update()
+            app.updateQuality()
         }
         //then
         assertEquals(excepted, actual.allDaysToString())
@@ -45,7 +45,7 @@ internal class GildedRoseTest {
         //when
         for (i in 0..1000) {
             actual.add(dayToString(i, app.items))
-            app.update()
+            app.updateQuality()
         }
         //then
         assertEquals(excepted, actual.allDaysToString())
